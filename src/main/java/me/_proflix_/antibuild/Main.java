@@ -17,15 +17,15 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
 
-        ColorUtil.chat("Loading files...");
+        getLogger().info(ColorUtil.chat("Loading files..."));
         loadFiles();
-        ColorUtil.chat("Files loaded successfully.");
+        getLogger().info(ColorUtil.chat("Files loaded successfully."));
 
-        ColorUtil.chat("Registering all listeners...");
+        getLogger().info(ColorUtil.chat("Registering all listeners..."));
         registerEvents();
-        ColorUtil.chat("Listeners loaded successfully.");
+        getLogger().info(ColorUtil.chat("Listeners loaded successfully."));
 
-        ColorUtil.chat("Plugin enabled successfully.");
+        getLogger().info(ColorUtil.chat("Plugin enabled successfully."));
     }
 
     // Plugin shutdown logic
@@ -39,7 +39,7 @@ public final class Main extends JavaPlugin {
 
     private void saveIfNotExists() {
         if (!(new File(getDataFolder(), "config.yml").exists())) {
-            ColorUtil.chat("File config.yml didn't exist, generating it...");
+            getLogger().info(ColorUtil.chat("File config.yml didn't exist, generating it..."));
             saveResource("config.yml", false);
         }
     }
@@ -75,7 +75,7 @@ public final class Main extends JavaPlugin {
                 case "BLACKLIST":
                     return !list.contains(item);
                 default:
-                    ColorUtil.chat("&7You must be using WHITELIST or BLACKLIST mode. Anything other is disabled.");
+                    getLogger().info(ColorUtil.chat("&7You must be using WHITELIST or BLACKLIST mode. Anything other is disabled."));
                     return false;
             }
         }

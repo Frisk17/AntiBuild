@@ -1,10 +1,12 @@
-# AntiBuild (v1.0.0)
-# Spigot link:
+# AntiBuild (v1.0.1)
+# Spigot link: https://www.spigotmc.org/resources/antibuild-1-7-x-1-16-x-customizable-per-world-opensource.87157/
 # GitHub link: https://github.com/ProfliXx/AntiBuild
 settings:
 # Block break
 # Disable block breaking by enabling this.
   block-break:
+# Set custom permission to break blocks.
+    permission: 'antibuild.bypass.break'
 # If player doesn't have permission, this message will be sent.
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break blocks in this world!'
 # If this is enabled block breaking will be disabled.
@@ -22,6 +24,8 @@ settings:
 # Block place
 # Disable block placing by enabling this.
   block-place:
+# Set custom permissions to place blocks.
+    permission: 'antibuild.bypass.place'
 # If player doesn't have permission, this message will be sent.
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to place blocks in this world!'
 # If this is enabled block placing will be disabled.

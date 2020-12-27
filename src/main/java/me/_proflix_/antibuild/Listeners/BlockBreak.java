@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
+import java.util.Objects;
+
 public class BlockBreak implements Listener {
 
     private final Main instance;
@@ -22,7 +24,7 @@ public class BlockBreak implements Listener {
         if (instance.isModuleEnabled("settings.block-break")
                 && instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-break.worlds")) {
             event.setCancelled(true);
-            if (player.hasPermission("antibuild.bypass.break")) {
+            if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.permission")))) {
                 event.setCancelled(false);
             }
             if (event.isCancelled()) {

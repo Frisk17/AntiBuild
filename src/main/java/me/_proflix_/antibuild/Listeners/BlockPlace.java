@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
+import java.util.Objects;
+
 public class BlockPlace implements Listener {
 
     private final Main instance;
@@ -22,7 +24,7 @@ public class BlockPlace implements Listener {
         if (instance.isModuleEnabled("settings.block-place")
                 && instance.isEnabledInList(event.getBlockPlaced().getWorld().getName(), "settings.block-place.worlds")) {
             event.setCancelled(true);
-            if (player.hasPermission("antibuild.bypass.place")) {
+            if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
                 event.setCancelled(false);
             }
             if (event.isCancelled()) {

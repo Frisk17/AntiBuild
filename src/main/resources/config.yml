@@ -1,0 +1,37 @@
+# AntiBuild (v1.0.0)
+# Spigot link:
+# GitHub link: https://github.com/ProfliXx/AntiBuild
+settings:
+# Block break
+# Disable block breaking by enabling this.
+  block-break:
+# If player doesn't have permission, this message will be sent.
+    no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break blocks in this world!'
+# If this is enabled block breaking will be disabled.
+    enabled: true
+# World Section
+# WHITELIST or BLACKLIST specific worlds, or just ALL of THEM
+    worlds:
+# If all is set to true worlds list down will be ignored
+      all: false
+# Select restriction mode (WHITELIST or BLACKLIST) Whitelist(Enabled Worlds) Blacklist(Disabled Worlds)
+      mode: WHITELIST
+# Worlds list (If only one world [ 'world' ] )
+      list: [ 'world', 'world_nether', 'world_the_end' ]
+#
+# Block place
+# Disable block placing by enabling this.
+  block-place:
+# If player doesn't have permission, this message will be sent.
+    no-permission: '&c&l AntiBuild &8| &cYou are not allowed to place blocks in this world!'
+# If this is enabled block placing will be disabled.
+    enabled: true
+# World Section
+# WHITELIST or BLACKLIST specific worlds, or just ALL of THEM
+    worlds:
+# If all is set to true worlds list down will be ignored
+      all: false
+# Select restriction mode (WHITELIST or BLACKLIST) Whitelist(Enabled Worlds) Blacklist(Disabled Worlds)
+      mode: WHITELIST
+# Worlds list (If only one world [ 'world' ] )
+      list: [ 'world', 'world_nether', 'world_the_end' ]

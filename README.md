@@ -7,4 +7,3 @@
 ### 🔥 Whitelist/Blacklist Feature
 ### 🔥 Enable/Disable Modules (Block placing/breaking)
 ### 🔥 Customizable Messages
-### 🔥 More to come..

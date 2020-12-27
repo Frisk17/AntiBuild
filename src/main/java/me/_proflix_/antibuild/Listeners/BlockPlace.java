@@ -22,9 +22,12 @@ public class BlockPlace implements Listener {
         if (instance.isModuleEnabled("settings.block-place")
                 && instance.isEnabledInList(event.getBlockPlaced().getWorld().getName(), "settings.block-place.worlds")) {
             event.setCancelled(true);
-            player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-place.no-permission")));
-        } else (player.hasPermission("antibuild.bypass.place") && event.isCancelled()) {
-            event.setCancelled(false);
+            if (player.hasPermission("antibuild.bypass.place")) {
+                event.setCancelled(false);
+            }
+            if (event.isCancelled()) {
+                player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-place.no-permission")));
+            }
         }
     }
 }

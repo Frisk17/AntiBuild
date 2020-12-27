@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreak implements Listener {
+
     private final Main instance;
 
     public BlockBreak(Main instance) {
@@ -21,9 +22,12 @@ public class BlockBreak implements Listener {
         if (instance.isModuleEnabled("settings.block-break")
                 && instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-break.worlds")) {
             event.setCancelled(true);
-            player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-break.no-permission")));
-        } else (player.hasPermission("antibuild.bypass.break") && event.isCancelled()) {
-            event.setCancelled(false);
+            if (player.hasPermission("antibuild.bypass.break")) {
+                event.setCancelled(false);
+            }
+            if (event.isCancelled()) {
+                player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-break.no-permission")));
+            }
         }
     }
 }

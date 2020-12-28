@@ -4,7 +4,7 @@
   <groupId>me._proflix_</groupId>
   <artifactId>AntiBuild</artifactId>
   <name>AntiBuild</name>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <description>Simple high-performance ANTI-BUILD plugin with PER-WORLD support.</description>
   <build>
     <resources>

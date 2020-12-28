@@ -1,21 +1,39 @@
-# AntiBuild (v1.1.0)
+# AntiBuild (v1.2.0)
 # Spigot link: https://www.spigotmc.org/resources/antibuild-1-7-x-1-16-x-customizable-per-world-opensource.87157/
 # GitHub link: https://github.com/ProfliXx/AntiBuild
 settings:
+#
 # Block break module
+#
   block-break:
     enabled: true # Enable/Disable ANTI BLOCK BREAK.
     permission: 'antibuild.bypass.break' # Set custom permission for block breaking.
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break blocks in this world!' # Send custom message to players without permission.
+    per-blocks: # Per-Word per-block support module
+      enabled: false # If this set to true per-block support in per-world will be enabled.
+      no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break <block> in this world!' # Send custom message to players without permission. (<block> is broken block)
+      blocks:
+        all: false # If this set to true list down below will be ignored.
+        mode: WHITELIST # Whitelist - enabled blocks list | Blacklist - disabled block list
+        list: [ 'GRASS_BLOCK' ] # Blocks
     worlds:
       all: false # If this set to true list down below will be ignored.
       mode: WHITELIST # Whitelist - enabled world list | Blacklist - disabled world list
       list: [ 'world', 'world_nether', 'world_the_end' ] # Worlds
+#
 # Block place module
+#
   block-place:
     enabled: true # Enable/Disable ANTI BLOCK PLACE
     permission: 'antibuild.bypass.place' # Set custom permission for block placing.
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to place blocks in this world!' # Send custom message to players without permission.
+    per-blocks: # Per-Word per-block support module
+      enabled: false # If this set to true per-block support in per-world will be enabled.
+      no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break <block> in this world!' # Send custom message to players without permission. (<block> is placed block)
+      blocks:
+        all: false # If this set to true list down below will be ignored.
+        mode: WHITELIST # Whitelist - enabled blocks list | Blacklist - disabled block list
+        list: [ 'GRASS_BLOCK' ] # Blocks
     worlds:
       all: false # If this set to true list down below will be ignored.
       mode: WHITELIST # Whitelist - enabled world list | Blacklist - disabled world list

@@ -2,6 +2,7 @@ package me._proflix_.antibuild.Listeners;
 
 import me._proflix_.antibuild.Main;
 import me._proflix_.antibuild.Utils.ColorUtil;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,19 +20,27 @@ public class BlockPlace implements Listener {
 
     @EventHandler
     public void onPlace(final BlockPlaceEvent event) {
+        Block material = event.getBlock();
         Player player = event.getPlayer();
 
-        if (instance.isModuleEnabled("settings.block-place")
-                && instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-place.worlds")) {
-            event.setCancelled(true);
+        if (instance.isModuleEnabled("settings.block-place")) {
 
-            if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
-                event.setBuild(true);
-            }
+            if (instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-place.worlds")) {
+                event.setCancelled(true);
 
-            if (event.isCancelled()) {
-                player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-place.no-permission")));
-            }
+                if (instance.isModuleEnabled("settings.block-place.per-blocks") && instance.isEnabledInList(material.getType().toString().toUpperCase(), "settings.block-place.per-blocks.blocks")) {
+                    event.setCancelled(true);
+
+                    player.sendMessage(ColorUtil.chat(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.per-blocks.no-permission")).replace("<block>", material.getType().name())));
+
+                } else if (event.isCancelled()) {
+                        player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-place.no-permission")));
+                    }
+                }
+
+                if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
+                    event.setCancelled(false);
+                }
         }
     }
 }

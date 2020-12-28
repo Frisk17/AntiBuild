@@ -37,6 +37,10 @@ public final class Main extends JavaPlugin {
         getLogger().info(ColorUtil.chat("&aPlugin enabled successfully."));
     }
 
+    public void onDisable() {
+        getLogger().info(ColorUtil.chat("&cPlugin disabled!"));
+    }
+
     private void loadFiles() {
         saveIfNotExists();
     }

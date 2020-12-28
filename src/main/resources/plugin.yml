@@ -3,4 +3,4 @@ version: ${project.version}
 main: me._proflix_.antibuild.Main
 api-version: 1.16
 authors: [ _ProfliX_ ]
-description: Simple high-performance anti-build plugin.
+description: Simple high-performance anti-build plugin with per-world & block support.

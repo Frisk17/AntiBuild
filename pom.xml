@@ -6,7 +6,7 @@
 
     <groupId>me._proflix_</groupId>
     <artifactId>AntiBuild</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>AntiBuild</name>

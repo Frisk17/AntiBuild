@@ -3,8 +3,9 @@
 ## ✨ Simple high-performance anti-build plugin. ✨
 
 ## 🔮 Features 🔮
+### 🔥 Per-Block Support
 ### 🔥 Per-World Support
 ### 🔥 Whitelist/Blacklist Feature
-### 🔥 Enable/Disable Modules (Block placing/breaking)
+### 🔥 Enable/Disable Modules (Block placing/breaking & per-block placing/breaking)
 ### 🔥 Customizable Messages
 ### 🔥 Customizable Permission

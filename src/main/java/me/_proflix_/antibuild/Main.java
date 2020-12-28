@@ -3,6 +3,7 @@ package me._proflix_.antibuild;
 import me._proflix_.antibuild.Listeners.BlockBreak;
 import me._proflix_.antibuild.Listeners.BlockPlace;
 import me._proflix_.antibuild.Utils.ColorUtil;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,22 +16,25 @@ public final class Main extends JavaPlugin {
     // Plugin startup logic
     @Override
     public void onEnable() {
+
+        // bStats
+        int pluginId = 9803;
+        Metrics metrics = new Metrics(this, pluginId);
+
+        // Save default config
         saveDefaultConfig();
 
-        getLogger().info(ColorUtil.chat("Loading files..."));
+        // Load files
+        getLogger().info(ColorUtil.chat("&7Loading files..."));
         loadFiles();
-        getLogger().info(ColorUtil.chat("Files loaded successfully."));
+        getLogger().info(ColorUtil.chat("&aFiles loaded successfully."));
 
-        getLogger().info(ColorUtil.chat("Registering all listeners..."));
+        // Register events
+        getLogger().info(ColorUtil.chat("&7Registering all listeners..."));
         registerEvents();
-        getLogger().info(ColorUtil.chat("Listeners loaded successfully."));
+        getLogger().info(ColorUtil.chat("&aListeners loaded successfully."));
 
-        getLogger().info(ColorUtil.chat("Plugin enabled successfully."));
-    }
-
-    // Plugin shutdown logic
-    @Override
-    public void onDisable() {
+        getLogger().info(ColorUtil.chat("&aPlugin enabled successfully."));
     }
 
     private void loadFiles() {
@@ -39,7 +43,7 @@ public final class Main extends JavaPlugin {
 
     private void saveIfNotExists() {
         if (!(new File(getDataFolder(), "config.yml").exists())) {
-            getLogger().info(ColorUtil.chat("File config.yml didn't exist, generating it..."));
+            getLogger().info(ColorUtil.chat("&cFile config.yml didn't exist, generating it..."));
             saveResource("config.yml", false);
         }
     }
@@ -63,7 +67,7 @@ public final class Main extends JavaPlugin {
     }
 
     // Per world stuff
-    public boolean isEnabledInList(String item, String configPath) {
+    public boolean isEnabledInList(String string, String configPath) {
         if (getConfig().getBoolean(configPath + ".all")) {
             return true;
         } else {
@@ -71,11 +75,11 @@ public final class Main extends JavaPlugin {
             String mode = Objects.requireNonNull(getConfig().getString(configPath + ".mode")).toUpperCase();
             switch (mode) {
                 case "WHITELIST":
-                    return list.contains(item);
+                    return list.contains(string);
                 case "BLACKLIST":
-                    return !list.contains(item);
+                    return !list.contains(string);
                 default:
-                    getLogger().info(ColorUtil.chat("&7You must be using WHITELIST or BLACKLIST mode. Anything other is disabled."));
+                    getLogger().info(ColorUtil.chat("&cYou must use WHITELIST or BLACKLIST mode. Anything other is disabled."));
                     return false;
             }
         }

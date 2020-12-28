@@ -24,12 +24,15 @@ public class BlockBreak implements Listener {
         if (instance.isModuleEnabled("settings.block-break")
                 && instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-break.worlds")) {
             event.setCancelled(true);
+
             if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.permission")))) {
                 event.setCancelled(false);
             }
+
             if (event.isCancelled()) {
                 player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-break.no-permission")));
             }
+
         }
     }
 }

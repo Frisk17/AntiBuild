@@ -22,11 +22,13 @@ public class BlockPlace implements Listener {
         Player player = event.getPlayer();
 
         if (instance.isModuleEnabled("settings.block-place")
-                && instance.isEnabledInList(event.getBlockPlaced().getWorld().getName(), "settings.block-place.worlds")) {
+                && instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-place.worlds")) {
             event.setCancelled(true);
+
             if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
-                event.setCancelled(false);
+                event.setBuild(true);
             }
+
             if (event.isCancelled()) {
                 player.sendMessage(ColorUtil.chat(instance.getConfig().getString("settings.block-place.no-permission")));
             }

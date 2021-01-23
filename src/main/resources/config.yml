@@ -30,6 +30,7 @@ settings:
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to place blocks in this world!' # Send custom message to players without permission.
     per-blocks: # Per-Word per-block support module
       enabled: false # If this set to true per-block support in per-world will be enabled.
+      permission: 'antibuild.bypass.per-place.' # Always leave "." after the permission for per-block support. Example: antibuild.bypass.per-break.GRASS_BLOCK > BYPASS LIST BELOW.
       no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break <block> in this world!' # Send custom message to players without permission. (<block> is placed block)
       blocks:
         all: false # If this set to true list down below will be ignored.

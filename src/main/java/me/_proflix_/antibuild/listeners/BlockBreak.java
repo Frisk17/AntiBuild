@@ -21,7 +21,7 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBreak(final BlockBreakEvent event) {
         Block material = event.getBlock();
-        String block = event.getBlock().getType().toString();
+        String block = event.getBlock().getType().toString().toUpperCase();
         Player player = event.getPlayer();
 
         if (instance.isModuleEnabled("settings.block-break")) {

@@ -1,8 +1,8 @@
 package me._proflix_.antibuild;
 
-import me._proflix_.antibuild.Listeners.BlockBreak;
-import me._proflix_.antibuild.Listeners.BlockPlace;
-import me._proflix_.antibuild.Utils.ColorUtil;
+import me._proflix_.antibuild.listeners.BlockBreak;
+import me._proflix_.antibuild.listeners.BlockPlace;
+import me._proflix_.antibuild.utils.ColorUtil;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,20 +25,20 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
 
         // Load files
-        getLogger().info(ColorUtil.chat("&7Loading files..."));
+        getLogger().info(ColorUtil.color("&7Loading files..."));
         loadFiles();
-        getLogger().info(ColorUtil.chat("&aFiles loaded successfully."));
+        getLogger().info(ColorUtil.color("&aFiles loaded successfully."));
 
         // Register events
-        getLogger().info(ColorUtil.chat("&7Registering all listeners..."));
+        getLogger().info(ColorUtil.color("&7Registering all listeners..."));
         registerEvents();
-        getLogger().info(ColorUtil.chat("&aListeners loaded successfully."));
+        getLogger().info(ColorUtil.color("&aListeners loaded successfully."));
 
-        getLogger().info(ColorUtil.chat("&aPlugin enabled successfully."));
+        getLogger().info(ColorUtil.color("&aPlugin enabled successfully."));
     }
 
     public void onDisable() {
-        getLogger().info(ColorUtil.chat("&cPlugin disabled!"));
+        getLogger().info(ColorUtil.color("&cPlugin disabled!"));
     }
 
     private void loadFiles() {
@@ -47,7 +47,7 @@ public final class Main extends JavaPlugin {
 
     private void saveIfNotExists() {
         if (!(new File(getDataFolder(), "config.yml").exists())) {
-            getLogger().info(ColorUtil.chat("&cFile config.yml didn't exist, generating it..."));
+            getLogger().info(ColorUtil.color("&cFile config.yml didn't exist, generating it..."));
             saveResource("config.yml", false);
         }
     }
@@ -83,7 +83,7 @@ public final class Main extends JavaPlugin {
                 case "BLACKLIST":
                     return !list.contains(string);
                 default:
-                    getLogger().info(ColorUtil.chat("&cYou must use WHITELIST or BLACKLIST mode. Anything other is disabled."));
+                    getLogger().info(ColorUtil.color("&cYou must use WHITELIST or BLACKLIST mode. Anything other is disabled."));
                     return false;
             }
         }

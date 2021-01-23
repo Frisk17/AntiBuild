@@ -1,4 +1,4 @@
-# AntiBuild (v1.2.0)
+# AntiBuild (v1.3.0)
 # Spigot link: https://www.spigotmc.org/resources/antibuild-1-7-x-1-16-x-customizable-per-world-opensource.87157/
 # GitHub link: https://github.com/ProfliXx/AntiBuild
 settings:
@@ -11,6 +11,7 @@ settings:
     no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break blocks in this world!' # Send custom message to players without permission.
     per-blocks: # Per-Word per-block support module
       enabled: false # If this set to true per-block support in per-world will be enabled.
+      permission: 'antibuild.bypass.per-break.' # Always leave "." after the permission for per-block support. Example: antibuild.bypass.per-break.GRASS_BLOCK > BYPASS LIST BELOW.
       no-permission: '&c&l AntiBuild &8| &cYou are not allowed to break <block> in this world!' # Send custom message to players without permission. (<block> is broken block)
       blocks:
         all: false # If this set to true list down below will be ignored.

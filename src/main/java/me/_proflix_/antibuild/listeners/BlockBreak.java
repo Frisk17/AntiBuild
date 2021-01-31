@@ -29,18 +29,17 @@ public class BlockBreak implements Listener {
             if (instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-break.worlds")) {
                 event.setCancelled(true);
 
+                if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.permission")))) {
+                    event.setCancelled(false);
+                } else if (event.isCancelled()) {
+                    player.sendMessage(ColorUtil.color(instance.getConfig().getString("settings.block-break.no-permission")));
+                }
                 if (instance.isModuleEnabled("settings.block-break.per-blocks") && instance.isEnabledInList(material.getType().toString().toUpperCase(), "settings.block-break.per-blocks.blocks")) {
                     event.setCancelled(!player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.per-blocks.permission" + block))));
                     if (event.isCancelled()) {
                         player.sendMessage(ColorUtil.color(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.per-blocks.no-permission")).replace("<block>", material.getType().name())));
                     }
-                } else if (event.isCancelled()) {
-                    player.sendMessage(ColorUtil.color(instance.getConfig().getString("settings.block-break.no-permission")));
                 }
-            }
-
-            if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-break.permission")))) {
-                event.setCancelled(false);
             }
         }
     }

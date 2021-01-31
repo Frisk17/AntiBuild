@@ -29,17 +29,18 @@ public class BlockPlace implements Listener {
             if (instance.isEnabledInList(event.getBlock().getWorld().getName(), "settings.block-place.worlds")) {
                 event.setCancelled(true);
 
+                if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
+                    event.setCancelled(false);
+                } else if (event.isCancelled()) {
+                    player.sendMessage(ColorUtil.color(instance.getConfig().getString("settings.block-place.no-permission")));
+                }
+
                 if (instance.isModuleEnabled("settings.block-place.per-blocks") && instance.isEnabledInList(material.getType().toString().toUpperCase(), "settings.block-place.per-blocks.blocks")) {
                     event.setCancelled(!player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.per-blocks.permission" + block))));
                     if (event.isCancelled()) {
                         player.sendMessage(ColorUtil.color(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.per-blocks.no-permission")).replace("<block>", material.getType().name())));
                     }
-                } else if (event.isCancelled()) {
-                    player.sendMessage(ColorUtil.color(instance.getConfig().getString("settings.block-place.no-permission")));
                 }
-            }
-            if (player.hasPermission(Objects.requireNonNull(instance.getConfig().getString("settings.block-place.permission")))) {
-                event.setCancelled(false);
             }
         }
     }
